@@ -1,0 +1,19 @@
+cluster.name: cluster-demo
+node.name: ${HOSTNAME}
+
+path.data: /var/data/elasticsearch
+path.logs: /var/log/elasticsearch
+
+gateway.recover_after_nodes: 2
+gateway.expected_nodes: 3
+gateway.recover_after_time: 3m
+
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.multicast.enable: false
+discovery.zen.ping.unicast.hosts: ["node01", "node02", "node03"]
+# discovery.zen.ping.unicast.hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
+
+node.master: True
+node.data: True
+
+bootstrap.mlockall: true
