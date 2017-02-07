@@ -1,4 +1,4 @@
-FROM centos:7
+FROM c7-systemd
 MAINTAINER "Shujin Wu"
 LABEL name="Elastic Search Node"
 
@@ -7,4 +7,6 @@ RUN curl 'https://download.elastic.co/elasticsearch/release/org/elasticsearch/di
 RUN rpm -ivh elasticsearch-2.4.4.rpm
 RUN systemctl enable elasticsearch.service
 
-CMD systemctl enable elasticsearch | systemctl start elasticsearch
+EXPOSE 9200
+
+CMD ["/usr/sbin/init"]
