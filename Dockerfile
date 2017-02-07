@@ -17,6 +17,12 @@ VOLUME [ "/sys/fs/cgroup" ]
 RUN yum -y install java-1.8.0-openjdk
 RUN curl 'https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/rpm/elasticsearch/2.4.4/elasticsearch-2.4.4.rpm' -o 'elasticsearch-2.4.4.rpm'
 RUN rpm -ivh elasticsearch-2.4.4.rpm
+
+RUN mkdir -p /var/data/elasticsearch
+RUN chown elasticsearch /var/data/elasticsearch/
+RUN cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch_org.yml
+COPY elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
+
 RUN systemctl enable elasticsearch.service
 
 EXPOSE 9200
