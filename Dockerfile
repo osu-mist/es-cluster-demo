@@ -23,8 +23,13 @@ RUN chown elasticsearch /var/data/elasticsearch/
 RUN cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch_org.yml
 COPY elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 
-RUN systemctl enable elasticsearch.service
+# Enable Memory Locking
+RUN cp /etc/sysconfig/elasticsearch /etc/sysconfig/elasticsearch_org
+COPY elasticsearch /etc/sysconfig/elasticsearch
+RUN cp /usr/lib/systemd/system/elasticsearch.service /usr/lib/systemd/system/elasticsearch_org.service
+COPY elasticsearch.service /usr/lib/systemd/system/elasticsearch.service
 
+RUN systemctl enable elasticsearch.service
 EXPOSE 9200
 
 CMD ["/usr/sbin/init"]
