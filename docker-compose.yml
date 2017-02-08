@@ -1,0 +1,51 @@
+version: '2'
+services:
+  node01:
+    build:
+      context: .
+    hostname: "node01"
+    container_name: "node01"
+    links:
+      - node02
+      - node03
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    cap_add:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  node02:
+    build:
+      context: .
+    hostname: "node02"
+    container_name: "node02"
+    links:
+      - node03
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    cap_add:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+
+  node03:
+    build:
+      context: .
+    hostname: "node03"
+    container_name: "node03"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    cap_add:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+    ports:
+      - "9202:9200"
+      - "9302:9300"
