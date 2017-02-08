@@ -17,4 +17,4 @@ network.host: 0.0.0.0
 node.master: true
 node.data: true
 
-# bootstrap.mlockall: true
+bootstrap.mlockall: true
