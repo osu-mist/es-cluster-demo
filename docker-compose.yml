@@ -12,6 +12,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     cap_add:
       - SYS_ADMIN
+      - IPC_LOCK
     tmpfs:
       - /run
     ports:
@@ -29,6 +30,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     cap_add:
       - SYS_ADMIN
+      - IPC_LOCK
     tmpfs:
       - /run
     ports:
@@ -44,6 +46,7 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     cap_add:
       - SYS_ADMIN
+      - IPC_LOCK
     tmpfs:
       - /run
     ports:
