@@ -1,15 +1,22 @@
 cluster.name: docker-cluster
 node.name: ${HOSTNAME}
 
+# Path to directory where to store the data (separate multiple locations by comma):
 path.data: "/var/data/elasticsearch"
+# Path to log files:
 path.logs: "/var/log/elasticsearch"
 
+# Block initial recovery after a full cluster restart until N nodes are started or after X minutes, whichever comes first.
 gateway.recover_after_nodes: 2
 gateway.expected_nodes: 3
 gateway.recover_after_time: 3m
 
+# Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 discovery.zen.minimum_master_nodes: 2
+
+# Prevent inrelavant nodes to accidentally join your production network
 discovery.zen.ping.multicast.enable: false
+# A list of nodes that ES should try to contact.
 discovery.zen.ping.unicast.hosts: ["node01", "node02", "node03"]
 # discovery.zen.ping.unicast.hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
 network.host: ["${HOSTNAME}", "_local_"]
@@ -17,4 +24,9 @@ network.host: ["${HOSTNAME}", "_local_"]
 node.master: true
 node.data: true
 
+# Lock the memory on startup:
 bootstrap.memory_lock: true
+# Make sure that the `ES_HEAP_SIZE` environment variable is set to about half the memory
+# available on the system and that the owner of the process is allowed to use this limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.

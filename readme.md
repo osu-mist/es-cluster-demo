@@ -1,4 +1,4 @@
-# Create an Elastic Search Cluster on CentOS7
+# Create an Three-node Elastic Search Cluster on CentOS7
 
 # Usage
 
