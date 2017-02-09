@@ -13,6 +13,14 @@ services:
     cap_add:
       - SYS_ADMIN
       - IPC_LOCK
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1g
     tmpfs:
       - /run
     ports:
@@ -31,6 +39,14 @@ services:
     cap_add:
       - SYS_ADMIN
       - IPC_LOCK
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1g
     tmpfs:
       - /run
     ports:
@@ -47,6 +63,14 @@ services:
     cap_add:
       - SYS_ADMIN
       - IPC_LOCK
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    mem_limit: 1g
     tmpfs:
       - /run
     ports:

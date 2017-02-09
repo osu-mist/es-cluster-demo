@@ -1,4 +1,4 @@
-cluster.name: cluster-demo
+cluster.name: docker-cluster
 node.name: ${HOSTNAME}
 
 path.data: "/var/data/elasticsearch"
@@ -17,5 +17,4 @@ network.host: ["${HOSTNAME}", "_local_"]
 node.master: true
 node.data: true
 
-# bootstrap.mlockall: true
 bootstrap.memory_lock: true
