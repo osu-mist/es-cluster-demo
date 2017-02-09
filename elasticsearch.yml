@@ -12,9 +12,10 @@ discovery.zen.minimum_master_nodes: 2
 discovery.zen.ping.multicast.enable: false
 discovery.zen.ping.unicast.hosts: ["node01", "node02", "node03"]
 # discovery.zen.ping.unicast.hosts: ["10.0.0.1", "10.0.0.2", "10.0.0.3"]
-network.host: 0.0.0.0
+network.host: ["${HOSTNAME}", "_local_"]
 
 node.master: true
 node.data: true
 
-bootstrap.mlockall: true
+# bootstrap.mlockall: true
+bootstrap.memory_lock: true
