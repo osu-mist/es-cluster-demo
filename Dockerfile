@@ -24,7 +24,7 @@ RUN cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch_org
 COPY elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 RUN systemctl enable elasticsearch.service
 
-# Install Elastic Search HQ
+# Install Elastic Search HQ/Head
 RUN /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ
 RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
 
