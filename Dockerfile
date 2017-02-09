@@ -26,6 +26,7 @@ RUN systemctl enable elasticsearch.service
 
 # Install Elastic Search HQ
 RUN /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ
+RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
 
 EXPOSE 9200
 
