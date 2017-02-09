@@ -7,7 +7,4 @@ docker-compose up --build
 ```
 
 # Monitor
-
 Go the [http://localhost:9200/_plugin/hq/#cluster](http://localhost:9200/_plugin/hq/#cluster)
-
-# Configuration
